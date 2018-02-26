@@ -49,13 +49,13 @@ func _init():
 	cfg_fpscap = 60.0;
 	cfg_shadow = true;
 	cfg_grassintensity = 1.0;
-	cfg_grassshadow = true;
-	cfg_chunksize = 4;
-	cfg_lowprocessmode = false;
-	cfg_fxaa = true;
-	cfg_glow = true;
-	cfg_fog = true;
-	cfg_showfps = false;
+	cfg_grassshadow = false;
+	cfg_chunksize = 2;
+	cfg_lowprocessmode = true;
+	cfg_fxaa = false;
+	cfg_glow = false;
+	cfg_fog = false;
+	cfg_showfps = true;
 	cfg_timecyclefps = 10.0;
 	cfg_caminterpolation = true;
 	
@@ -133,6 +133,7 @@ func save_config():
 	f.close();
 
 func load_config():
+	return
 	var f = File.new();
 	if !f.file_exists(CONFIG_PATH):
 		print("File isn't exists: ",CONFIG_PATH);
@@ -160,6 +161,7 @@ func save_game():
 	f.close();
 
 func load_game():
+	return
 	var f = File.new();
 	if !f.file_exists(SAVEGAME_PATH):
 		print("File isn't exists: ",SAVEGAME_PATH);

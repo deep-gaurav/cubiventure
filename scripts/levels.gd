@@ -1,5 +1,7 @@
 extends Spatial
 
+var doneone=false
+var multimesh
 var world_seed;
 var noise = preload("res://scripts/perlin_noise.gd");
 
@@ -23,6 +25,8 @@ func _ready():
 	obj_base = load(obj_base);
 	scn_zombie = load(scn_zombie);
 	grass_mesh = load(grass_mesh);
+	
+	multmesh()
 
 func generate_world(seeds):
 	world_seed = seeds;
@@ -83,18 +87,7 @@ func generate_chunk(chunk_pos):
 	
 	var inst = MultiMeshInstance.new();
 	inst.set_name("grass");
-	var multimesh = MultiMesh.new();
-	multimesh.set_mesh(grass_mesh);
-	multimesh.set_instance_count(rand_range(64*globals.cfg_grassintensity,128*globals.cfg_grassintensity));
-	
-	for i in range(multimesh.get_instance_count()):
-		var trans = Transform();
-		trans = trans.scaled(Vector3(1,1,1)*rand_range(0.8, 1.5));
-		trans = trans.rotated(Vector3(0,1,0), deg2rad(rand_range(0.0, 360.0)));
-		trans.origin = Vector3(rand_range(-8.0,8.0), 0, rand_range(-8.0,8.0));
-		multimesh.set_instance_transform(i, trans);
-	
-	multimesh.generate_aabb();
+
 	inst.set_multimesh(multimesh);
 	if globals.cfg_grassshadow:
 		inst.set_flag(GeometryInstance.FLAG_CAST_SHADOW, 2);
@@ -111,8 +104,22 @@ func generate_chunk(chunk_pos):
 	elif rand_range(10, 100) > 60 && globals.zombies_killed.find([chunk_pos.x, chunk_pos.y]) < 0:
 		var obj = add_object(chunk, scn_zombie, Vector3(rand_range(-6.0,6.0), 0, rand_range(-6.0,6.0)));
 		obj.chunk = [chunk_pos.x, chunk_pos.y];
-	
+	inst.free()
 	add_child(chunk, false);
+	
+func multmesh():
+	multimesh = MultiMesh.new();
+	multimesh.set_mesh(grass_mesh);
+	multimesh.set_instance_count(rand_range(64*globals.cfg_grassintensity,128*globals.cfg_grassintensity));
+	
+	for i in range(multimesh.get_instance_count()):
+		var trans = Transform();
+		trans = trans.scaled(Vector3(1,1,1)*rand_range(0.8, 1.5));
+		trans = trans.rotated(Vector3(0,1,0), deg2rad(rand_range(0.0, 360.0)));
+		trans.origin = Vector3(rand_range(-8.0,8.0), 0, rand_range(-8.0,8.0));
+		multimesh.set_instance_transform(i, trans);
+	
+	#multimesh.generate_aabb();
 
 func _fixed_process(delta):
 	chunks_update();

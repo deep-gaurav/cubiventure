@@ -10,8 +10,6 @@ ambient_light/energy = 0.2
 fxaa/enabled = true
 background/mode = 2
 background/color = Color( 0.663712, 0.74313, 0.949219, 1 )
-background/texture = null
-background/cubemap = null
 background/energy = 1.0
 background/scale = 1.0
 background/glow = 0.1
@@ -55,9 +53,9 @@ script/script = ExtResource( 1 )
 
 [node name="pivot" type="Spatial" parent="."]
 
+editor/display_folded = true
 _import_transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform/local = Transform( -0.422977, 0.906141, 0, -0.906141, -0.422977, 0, 0, 0, 1, 0, 0, 0 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="moon" type="Spatial" parent="pivot"]
 

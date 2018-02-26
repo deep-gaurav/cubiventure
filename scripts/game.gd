@@ -30,9 +30,11 @@ func _ready():
 	
 	init_gui();
 	construct_level();
+	
 	spawn_player();
 	init_skills();
 	
+	#return
 	set_process(true);
 	set_process_input(true);
 
