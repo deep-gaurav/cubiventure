@@ -161,7 +161,7 @@ func save_game():
 	f.close();
 
 func load_game():
-	
+	return
 	var f = File.new();
 	if !f.file_exists(SAVEGAME_PATH):
 		print("File isn't exists: ",SAVEGAME_PATH);

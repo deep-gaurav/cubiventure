@@ -165,6 +165,7 @@ func _physics_process(delta):
 		
 		if globals.player_dying:
 			set_animation("died");
+			set_physics_process(false)
 		elif dir.length() >= 0.5 && on_floor:
 			set_animation("run", false, move_speed/float(MOVE_SPEED));
 		elif vel.y > 0 && !on_floor:

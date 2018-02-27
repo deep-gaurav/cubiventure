@@ -1,44 +1,47 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=3
+
 [application]
 
-config/icon = "res://icon.png"
-config/name = "Cubiventure"
-run/main_scene = "res://scenes/game.tscn"
-target_fps = 30
-use_shared_user_dir = false
+config/name="Cubiventure"
+run/main_scene="res://scenes/game.tscn"
+config/icon="res://icon.png"
+target_fps=30
+use_shared_user_dir=false
 
 [autoload]
 
-globals = "*res://scripts/globals.gd"
-
-[display]
-
-window/size/borderless = false
-window/vsync/use_vsync = true
+globals="*res://scripts/globals.gd"
 
 [importer_defaults]
 
-texture = {
+texture={
 "flags/filter": true,
 "flags/mipmaps": true
 }
 
-[physics]
-
-common/physics_fps = 60
-
 [rasterizer]
 
-fp16_framebuffer = false
-max_shadow_buffer_size = 1024
-shadow_filter = 0
-trilinear_mipmap_filter = false
-use_fragment_lighting = false
+fp16_framebuffer=false
+max_shadow_buffer_size=1024
+shadow_filter=0
+trilinear_mipmap_filter=false
+use_fragment_lighting=false
 
 [rasterizer.Android]
 
-use_fragment_lighting = true
+use_fragment_lighting=true
 
 [rendering]
 
-threads/thread_model = 2
-
+threads/thread_model=2
+quality/directional_shadow/size=2048
+quality/reflections/high_quality_ggx=false
+quality/shading/force_vertex_shading=true
