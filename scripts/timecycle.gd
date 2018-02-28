@@ -1,6 +1,6 @@
 extends Spatial
 
-const SPEED = 5.0;
+const SPEED = 15.0;
 const SUN_ANGLE = 45.0;
 
 const lightningMin = 0.3;
@@ -12,7 +12,7 @@ var dirlight;
 
 func _ready():
 	delay = 0.0;
-	env = get_node("WorldEnvironment").environment;
+	env = $WorldEnvironment.environment;
 	dirlight = get_node("DirectionalLight");
 	
 	#G3 Change
@@ -64,7 +64,9 @@ func _process(delta):
 	
 	var bg = Color(169/255.0*(light-0.1), 189/255.0*(light-0.1), 242/255.0*(light-0.1));
 	var col = Color(light,light,light);
+	print((0.2+(0.4*light)))
 	env.background_color=(bg);
 	env.ambient_light_color=col;
-	env.ambient_light_energy=(0.2+(0.4*light));
+	env.ambient_light_energy=3*(0.2+(0.4*light));
+	env.fog_color=col
 	$WorldEnvironment.environment=env

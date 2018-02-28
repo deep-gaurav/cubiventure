@@ -28,9 +28,9 @@ background_mode = 1
 background_sky = SubResource( 1 )
 background_sky_custom_fov = 0.0
 background_color = Color( 0.650833, 0.80353, 0.863281, 1 )
-background_energy = 0.2
+background_energy = 0.4
 background_canvas_max_layer = 0
-ambient_light_color = Color( 0, 0, 0, 1 )
+ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 1.0
 ambient_light_sky_contribution = 1.0
 fog_enabled = true
@@ -39,9 +39,9 @@ fog_sun_color = Color( 1, 0.9, 0.7, 1 )
 fog_sun_amount = 0.0
 fog_depth_enabled = true
 fog_depth_begin = 10.0
-fog_depth_curve = 1.0
+fog_depth_curve = 0.812252
 fog_transmit_enabled = false
-fog_transmit_curve = 1.0
+fog_transmit_curve = 0.901251
 fog_height_enabled = false
 fog_height_min = 0.0
 fog_height_max = 100.0
@@ -49,7 +49,7 @@ fog_height_curve = 1.0
 tonemap_mode = 0
 tonemap_exposure = 1.0
 tonemap_white = 1.0
-auto_exposure_enabled = true
+auto_exposure_enabled = false
 auto_exposure_scale = 0.4
 auto_exposure_min_luma = 0.05
 auto_exposure_max_luma = 8.0
@@ -74,8 +74,8 @@ ssao_edge_sharpness = 4.0
 dof_blur_far_enabled = true
 dof_blur_far_distance = 15.0
 dof_blur_far_transition = 5.0
-dof_blur_far_amount = 0.1
-dof_blur_far_quality = 1
+dof_blur_far_amount = 0.08
+dof_blur_far_quality = 0
 dof_blur_near_enabled = false
 dof_blur_near_distance = 2.0
 dof_blur_near_transition = 1.0
@@ -100,7 +100,7 @@ adjustment_enabled = false
 adjustment_brightness = 1.0
 adjustment_contrast = 1.0
 adjustment_saturation = 1.0
-_sections_unfolded = [ "Auto Exposure", "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "Glow", "Glow/levels" ]
+_sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "Glow", "Glow/levels", "SS Reflections", "SSAO", "Tonemap" ]
 
 [node name="scenery" type="Spatial" index="0"]
 
@@ -118,16 +118,19 @@ transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 1000, 0 )
 
 transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -3.05176e-05, -1000, 0 )
 
-[node name="DirectionalLight" type="DirectionalLight" parent="." index="1"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 
-transform = Transform( -0.198268, -0.728729, 0.655472, 0, 0.668748, 0.743489, -0.980148, 0.14741, -0.132592, 0, 0, 0 )
+environment = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="." index="2"]
+
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
 light_energy = 1.0
-light_indirect_energy = 0.0
+light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
-light_bake_mode = 2
+light_bake_mode = 1
 light_cull_mask = -1
 shadow_enabled = true
 shadow_color = Color( 0, 0, 0, 1 )
@@ -139,15 +142,11 @@ directional_shadow_mode = 0
 directional_shadow_split_1 = 0.1
 directional_shadow_split_2 = 0.2
 directional_shadow_split_3 = 0.5
-directional_shadow_blend_splits = true
+directional_shadow_blend_splits = false
 directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
-directional_shadow_depth_range = 0
-directional_shadow_max_distance = 200.0
-_sections_unfolded = [ "Directional Shadow", "Editor", "Light", "Shadow" ]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="2"]
-
-environment = SubResource( 2 )
+directional_shadow_depth_range = 1
+directional_shadow_max_distance = 100.0
+_sections_unfolded = [ "Directional Shadow", "Light", "Shadow" ]
 
 
