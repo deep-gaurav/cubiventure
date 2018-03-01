@@ -102,7 +102,7 @@ adjustment_contrast = 1.0
 adjustment_saturation = 1.0
 _sections_unfolded = [ "Ambient Light", "Auto Exposure", "Background", "DOF Far Blur", "DOF Near Blur", "Fog", "Glow", "Glow/levels", "SS Reflections", "SSAO", "Tonemap" ]
 
-[node name="scenery" type="Spatial" index="0"]
+[node name="scenery" type="Spatial"]
 
 script = ExtResource( 1 )
 
@@ -117,6 +117,7 @@ transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 1000, 0 )
 [node name="sun" type="Spatial" parent="pivot" index="1"]
 
 transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, -3.05176e-05, -1000, 0 )
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
 

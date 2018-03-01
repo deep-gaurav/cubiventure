@@ -50,7 +50,7 @@ func _init():
 	cfg_shadow = true;
 	cfg_grassintensity = 1.0;
 	cfg_grassshadow = false;
-	cfg_chunksize = 8;
+	cfg_chunksize = 6;
 	cfg_lowprocessmode = true;
 	cfg_fxaa = false;
 	cfg_glow = false;

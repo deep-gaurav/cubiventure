@@ -34,7 +34,7 @@ func _ready():
 	tomato = load(tomato);
 	projectile = projectile.new();
 	
-	get_node("trajectory").get_material_override().set_line_width(3);
+	#get_node("trajectory").get_material_override().set_line_width(3);
 	cam.excl.push_back(self);
 	cam.set_active(true);
 	
@@ -181,6 +181,7 @@ func _physics_process(delta):
 	globals.player_pos = get_global_transform().origin;
 
 func update_trajectory():
+	
 	var mesh = get_node("trajectory");
 	if !aiming || globals.player_dying:
 		mesh.hide();

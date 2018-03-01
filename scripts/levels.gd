@@ -8,13 +8,13 @@ var noise = preload("res://scripts/perlin_noise.gd");
 const CHUNK_DISTANCE = 20.0;
 var player_pos = Vector2();
 var chunks = [];
-var chunkscene = preload("res://scenes/chunk.tscn")
+var chunkscene = load("res://scenes/chunk.tscn")
 var obj_platform = "res://models/platform/grass_platform.scn";
 var obj_tree = ["res://models/props/tree/tree.scn","res://models/props/tree/tree1.scn","res://models/props/tree/pine_tree.scn"];
 var obj_stone = ["res://models/props/stone/stone.scn","res://models/props/stone/stone1.scn","res://models/props/stone/stone2.scn"];
 var obj_base = "res://models/props/base/base.scn";
 var scn_zombie = "res://scenes/zombie.tscn";
-var grass_mesh = "res://models/props/grass/grass.msh";
+var grass_mesh = "res://models/props/grass/grass.obj";
 
 func _ready():
 	obj_platform = load(obj_platform);
@@ -85,16 +85,6 @@ func generate_chunk(chunk_pos):
 			Vector3(0, rand_range(0.0, 360.0), 0), \
 			Vector3(1,1,1)*rand_range(0.8, 1.5));
 	
-	#var inst = MultiMeshInstance.new();
-	#inst.set_name("grass");
-
-	#inst.set_multimesh(multimesh);
-	#if globals.cfg_grassshadow:
-	#	inst.set_flag(GeometryInstance.FLAG_CAST_SHADOW, 2);
-	#else:
-	#	inst.set_flag(GeometryInstance.FLAG_CAST_SHADOW, 0);
-	#chunk.add_child(inst, true);
-	
 	if spawn_base:
 		add_object(chunk, obj_base, Vector3(-4, 0, -4));
 		if globals.zombies_killed.find([chunk_pos.x, chunk_pos.y]) < 0:
@@ -111,16 +101,7 @@ func generate_chunk(chunk_pos):
 	print("gen chunk called", cht)
 	
 func multmesh():
-	multimesh = MultiMesh.new();
-	multimesh.set_mesh(grass_mesh);
-	multimesh.set_instance_count(rand_range(64*globals.cfg_grassintensity,128*globals.cfg_grassintensity));
-	
-	for i in range(multimesh.get_instance_count()):
-		var trans = Transform();
-		trans = trans.scaled(Vector3(1,1,1)*rand_range(0.8, 1.5));
-		trans = trans.rotated(Vector3(0,1,0), deg2rad(rand_range(0.0, 360.0)));
-		trans.origin = Vector3(rand_range(-8.0,8.0), 0, rand_range(-8.0,8.0));
-		multimesh.set_instance_transform(i, trans);
+	return
 	#multimesh.generate_aabb();
 
 func _physics_process(delta):
