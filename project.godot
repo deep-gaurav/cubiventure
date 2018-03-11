@@ -41,7 +41,4 @@ use_fragment_lighting=true
 
 [rendering]
 
-threads/thread_model=2
-quality/directional_shadow/size=2048
 quality/reflections/high_quality_ggx=false
-quality/shading/force_vertex_shading=true

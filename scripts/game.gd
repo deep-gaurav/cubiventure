@@ -124,7 +124,8 @@ func construct_level():
 	get_node("env/levels").generate_world(globals.world_seeds);
 
 func spawn_player():
-	var inst = load("res://scenes/player.tscn").instance();
+	var inst_p = load("res://scenes/player.tscn")
+	var inst=inst_p.instance()
 	inst.set_translation(globals.player_pos+Vector3(0,1,0));
 	get_node("env").add_child(inst, true);
 	globals.player = inst;

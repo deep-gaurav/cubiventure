@@ -64,7 +64,7 @@ func _process(delta):
 	
 	var bg = Color(169/255.0*(light-0.1), 189/255.0*(light-0.1), 242/255.0*(light-0.1));
 	var col = Color(light,light,light);
-	print((0.2+(0.4*light)))
+	#print((0.2+(0.4*light)))
 	env.background_color=(bg);
 	env.ambient_light_color=col;
 	env.ambient_light_energy=3*(0.2+(0.4*light));

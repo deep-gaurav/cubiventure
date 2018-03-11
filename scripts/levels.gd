@@ -98,7 +98,7 @@ func generate_chunk(chunk_pos):
 	add_child(chunk, false);
 	
 	cht+=1
-	print("gen chunk called", cht)
+	#print("gen chunk called", cht)
 	
 func multmesh():
 	return

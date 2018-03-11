@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://sprites/src/blood_screen.png" type="Texture" id=2]
@@ -81,11 +81,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=3]
-
-render_priority = 0
-
-[sub_resource type="GDScript" id=4]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Label
 
@@ -95,7 +91,7 @@ func _ready():
 func _process(delta):
 	set_text(\"FPS: \"+str(Engine.get_frames_per_second()));"
 
-[node name="game" type="Node"]
+[node name="game" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
@@ -322,7 +318,6 @@ __meta__ = {
 [node name="fx_blur" type="TextureRect" parent="gui" index="4"]
 
 self_modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 3 )
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
@@ -336,7 +331,7 @@ size_flags_vertical = 2
 texture = ExtResource( 11 )
 expand = true
 stretch_mode = 0
-_sections_unfolded = [ "Material", "Visibility" ]
+_sections_unfolded = [ "Anchor", "Material", "Visibility" ]
 __meta__ = {
 "_edit_lock_": true
 }
@@ -685,7 +680,7 @@ custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script = SubResource( 4 )
+script = SubResource( 3 )
 
 [node name="env" type="Spatial" parent="." index="1"]
 

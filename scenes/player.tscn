@@ -71,6 +71,7 @@ doppler_tracking = 0
 
 [node name="trajectory" type="ImmediateGeometry" parent="." index="4"]
 
+visible = false
 layers = 1
 material_override = null
 cast_shadow = 0
